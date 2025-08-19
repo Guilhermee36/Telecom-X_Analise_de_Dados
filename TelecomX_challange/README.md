@@ -1,54 +1,28 @@
-# Análise de Churn de Clientes - TelecomX
+# 📊 Análise de Churn - TelecomX
 
-## Visão Geral do Projeto
+## 🎯 Objetivo
+Este projeto realiza uma análise exploratória do **churn (cancelamento de clientes)** da TelecomX. O intuito é identificar os fatores mais relevantes para a evasão e gerar insights que ajudem a empresa a criar estratégias de retenção mais eficazes.
 
-Este projeto consiste em uma análise exploratória de dados e identificação dos principais fatores que influenciam a taxa de churn (cancelamento) de clientes da TelecomX. O objetivo é entender o comportamento dos clientes que cancelam seus serviços e fornecer insights que possam auxiliar a empresa a desenvolver estratégias de retenção mais eficazes.
+## 📂 Dados
+- Fonte: [TelecomX_Data.json](https://raw.githubusercontent.com/ingridcristh/challenge2-data-science/refs/heads/main/TelecomX_Data.json)  
+- Informações incluídas: dados demográficos, serviços contratados (telefone, internet, etc.), informações contratuais e cobranças.
 
-## Fonte de Dados
+## 🔎 Etapas da Análise
+1. **Coleta** → Importação do arquivo JSON.  
+2. **Preparação** → Expansão de colunas aninhadas, renomeação, tratamento de valores ausentes e criação de variáveis derivadas.  
+3. **Exploração** → Análise da taxa de churn por perfil, contrato, serviços e pagamentos.  
+4. **Visualização** → Gráficos ilustrativos (pizza, rosca, barras) para destacar padrões e tendências.  
 
-Os dados utilizados nesta análise foram obtidos a partir de um arquivo JSON disponível publicamente. O dataset contém informações sobre clientes da TelecomX, incluindo dados demográficos, serviços contratados (telefone, internet, etc.), informações contratuais e dados de cobrança.
+## 📈 Principais Insights
+- **Contratos Month-to-month** concentram a maior parte dos cancelamentos.  
+- **Primeiros meses de uso** são os mais críticos para retenção.  
+- Clientes de **fibra óptica** e pagamento via **Electronic check** apresentam maior propensão ao churn.  
+- Usuários que cancelam pagam, em média, **valores mensais mais altos**.  
 
-- **URL do Dataset:** `https://raw.githubusercontent.com/ingridcristh/challenge2-data-science/refs/heads/main/TelecomX_Data.json`
+## ⚙️ Como Executar
+Clone este repositório e instale as dependências necessárias, ou abra diretamente no **Google Colab**.  
 
-## Etapas da Análise
+### Requisitos
+```bash
+pip install pandas numpy matplotlib seaborn
 
-O notebook (`.ipynb`) deste repositório detalha as seguintes etapas da análise:
-
-1.  **Extração:** Carregamento dos dados a partir do arquivo JSON.
-2.  **Transformação:**
-    *   Expansão das colunas que contêm dicionários (`customer`, `phone`, `internet`, `account`) em colunas separadas para facilitar o acesso aos dados aninhados.
-    *   Renomeação de colunas com caracteres especiais (`Charges.Monthly` e `Charges.Total`).
-    *   Tratamento de valores ausentes ou inconsistentes, como a substituição de valores vazios na coluna `ChargesTotal` e a conversão desta coluna para o tipo numérico.
-    *   Criação de novas colunas para análise, como `Daily_Charges` e `TempoBase` (categorização do tempo de permanência do cliente).
-3.  **Carga e Análise:**
-    *   Análise da proporção geral de churn na base.
-    *   Investigação da distribuição do churn por diferentes atributos dos clientes (gênero, senioridade, dependentes, tempo de base, tipo de contrato, serviços de telefone e internet, método de pagamento).
-    *   Cálculo e comparação dos valores médios de cobrança mensal entre clientes com e sem churn.
-    *   Cálculo da correlação entre variáveis numéricas relevantes (`tenure`, `ChargesMonthly`, `ChargesTotal`).
-4.  **Visualização de Dados:**
-    *   Geração de gráficos para ilustrar os principais achados da análise, incluindo:
-        *   Proporção de Churn na Base (Gráfico de Rosca).
-        *   Distribuição de Churn por Gênero, Senioridade, Dependentes e Gênero (Gráficos de Pizza).
-        *   Distribuição do Churn por Tempo de Base (Gráfico de Barras).
-        *   Distribuição do Churn por Tipo de Contrato vs Tempo de Base (Gráfico de Pizza e Barras Agrupadas).
-        *   Análise de Churn por Serviços (PhoneService, InternetService) e Tempo de Base (Gráficos de Pizza e Barras Agrupadas).
-        *   Análise de Churn por Método de Pagamento e Tempo de Base (Gráficos de Pizza e Barras Agrupadas).
-        *   Análise de Valores Médios por Tempo de Base e Propensão ao Churn (Gráfico de Barras).
-
-## Principais Resultados e Insights
-
-A análise identificou diversos fatores que impactam a propensão ao churn, destacando-se:
-
-*   A alta concentração de churn nos **primeiros meses de serviço**, especialmente em clientes com **contrato "Month-to-month"**.
-*   Clientes que utilizam o serviço de **fibra óptica** e aqueles que pagam via **"Electronic check"** apresentam maior taxa de churn.
-*   Clientes que cancelam geralmente possuem **valores de cobrança mensal mais elevados**.
-
-Um relatório detalhado com as conclusões e recomendações pode ser encontrado no arquivo `Relatorio_Analise_Churn_TelecomX.md`.
-
-## Como Executar o Notebook
-
-Para replicar a análise, você pode abrir o notebook diretamente no Google Colab ou clonar este repositório e executá-lo em um ambiente Python com as bibliotecas necessárias instaladas.
-
-**Bibliotecas Necessárias:**
-
-pandas, numpy, matplotlib, seaborn
